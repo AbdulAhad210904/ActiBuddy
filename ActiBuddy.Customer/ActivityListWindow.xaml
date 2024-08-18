@@ -1,0 +1,29 @@
+﻿<Window x:Class="ActiBuddy.Customer.ActivityListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ActiBuddy.Customer"
+        mc:Ignorable="d"
+        Title="ActivityListWindow" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="ActivitiesDataGrid" AutoGenerateColumns="False" Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}" />
+                <DataGridTextColumn Header="Date" Binding="{Binding Date}" />
+                <DataGridTextColumn Header="Latitude" Binding="{Binding Latitude}" />
+                <DataGridTextColumn Header="Longitude" Binding="{Binding Longitude}" />
+
+                <!-- Sign Up Button -->
+                <DataGridTemplateColumn Header="Sign Up">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Sign Up" Click="SignUpButton_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
