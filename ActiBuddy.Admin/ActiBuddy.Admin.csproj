@@ -143,11 +143,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ActiBuddy.Data\ActiBuddy.Data.csproj">
       <Project>{19964894-736a-4a13-8d11-b6d33397bc5d}</Project>
