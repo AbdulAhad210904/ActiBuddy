@@ -22,12 +22,14 @@ namespace ActiBuddy.Admin
 
         private void LoadActivities()
         {
+            // Get all activities from the database and display them in the DataGrid
             List<Activity> activities = _activityRepository.GetAllActivities().ToList();
             ActivitiesDataGrid.ItemsSource = activities;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            // Open the ActivityDialogWindow to add a new activity
             var activityDialog = new ActivityDialogWindow();
             if (activityDialog.ShowDialog() == true)
             {
@@ -39,6 +41,7 @@ namespace ActiBuddy.Admin
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
+            // Open the ActivityDialogWindow to edit the selected activity
             if (sender is Button button && button.DataContext is Activity selectedActivity)
             {
                 var activityDialog = new ActivityDialogWindow(selectedActivity);
@@ -53,6 +56,7 @@ namespace ActiBuddy.Admin
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            // Delete the selected activity from the database
             if (sender is Button button && button.DataContext is Activity selectedActivity)
             {
                 MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this activity?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);

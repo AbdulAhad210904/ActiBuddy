@@ -14,21 +14,25 @@ namespace ActiBuddy.Data.Repositories
 
         public UserRepository(DatabaseContext context)
         {
+            //context is a parameter that is passed to the constructor
             _context = context;
         }
 
         public User GetUserById(int id)
         {
+            //Find the user by id
             return _context.Users.Find(id);
         }
 
         public IEnumerable<User> GetAllUsers()
         {
+            //Return all users
             return _context.Users.ToList();
         }
 
         public void AddUser(User user)
         {
+            //Add the user to the database
             user.PasswordHash = HashPassword(user.PasswordHash); // Hashing the password before saving
             _context.Users.Add(user);
             _context.SaveChanges();
@@ -36,12 +40,14 @@ namespace ActiBuddy.Data.Repositories
 
         public void UpdateUser(User user)
         {
+            //Update the user in the database
             _context.Entry(user).State = System.Data.Entity.EntityState.Modified;
             _context.SaveChanges();
         }
 
         public void DeleteUser(int id)
         {
+            //Find the user by id and remove it from the database
             var user = _context.Users.Find(id);
             if (user != null)
             {
@@ -49,14 +55,14 @@ namespace ActiBuddy.Data.Repositories
                 _context.SaveChanges();
             }
         }
-        // New method for validating the user credentials
+        // method for validating the user credentials
         public User ValidateUser(string username, string password)
         {
             string hashedPassword = HashPassword(password);
             return _context.Users.FirstOrDefault(u => u.Username == username && u.PasswordHash == hashedPassword);
         }
 
-        // Utility method for hashing the password using SHA256
+        // method for hashing the password using SHA256
         public string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())

@@ -32,10 +32,13 @@ namespace ActiBuddy.Customer
             LoadUserActivities();
         }
 
+        // Load all activities for the current user
         private void LoadUserActivities()
         {
             UserActivitiesDataGrid.ItemsSource = _userActivityRepository.GetUserActivitiesByUserId(_userId);
         }
+
+        // Delete an activity aginst that userid
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && button.DataContext is UserActivity activity)

@@ -13,8 +13,6 @@
     using System.Windows.Navigation;
     using System.Windows.Shapes;
 
-    using System.Windows;
-
     namespace ActiBuddy.Customer
     {
         public partial class MainWindow : Window

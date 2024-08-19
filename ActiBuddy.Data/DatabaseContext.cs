@@ -14,6 +14,7 @@ namespace ActiBuddy.Data
         public DbSet<Activity> Activities { get; set; }
         public DbSet<UserActivity> UserActivities { get; set; }
 
+        // Constructor for the DatabaseContext class
         public DatabaseContext() : base("name=ActiBuddyDB")
         {
         }

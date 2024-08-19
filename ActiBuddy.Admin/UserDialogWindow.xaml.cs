@@ -41,6 +41,7 @@ namespace ActiBuddy.Admin
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            // Validate form fields and save the user upon successful validation
             if (ValidateForm())
             {
                 if (User == null)
@@ -114,6 +115,7 @@ namespace ActiBuddy.Admin
 
         private bool IsValidEmail(string email)
         {
+            // Basic email validation
             try
             {
                 var addr = new System.Net.Mail.MailAddress(email);

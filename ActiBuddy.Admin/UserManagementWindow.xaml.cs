@@ -32,12 +32,14 @@ namespace ActiBuddy.Admin
 
         private void LoadUsers()
         {
+            // Get all users from the database and display them in the DataGrid
             List<User> users = _userRepository.GetAllUsers().ToList();
             UsersDataGrid.ItemsSource = users;
         }
 
         private void AddUser_Click(object sender, RoutedEventArgs e)
         {
+            // Open the UserDialogWindow to add a new user
             var userDialog = new UserDialogWindow();
             if (userDialog.ShowDialog() == true)
             {
@@ -48,6 +50,7 @@ namespace ActiBuddy.Admin
         }
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
+            // Open the UserDialogWindow to edit the selected user
             if (sender is Button button && button.DataContext is User selectedUser)
             {
                 var userDialog = new UserDialogWindow(selectedUser);
@@ -62,6 +65,7 @@ namespace ActiBuddy.Admin
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            // Delete the selected user from the database
             if (sender is Button button && button.DataContext is User selectedUser)
             {
                 MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this user?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);

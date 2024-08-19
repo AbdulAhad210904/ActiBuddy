@@ -27,7 +27,7 @@ namespace ActiBuddy.Admin
 
             if (Activity != null)
             {
-                // Populate fields with activity data if editing
+                // Populate fields with activity data if editing the partcular ctivity
                 NameTextBox.Text = Activity.Name;
                 DescriptionTextBox.Text = Activity.Description;
                 DatePicker.SelectedDate = Activity.Date;

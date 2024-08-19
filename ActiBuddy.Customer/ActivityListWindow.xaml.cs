@@ -31,11 +31,13 @@ namespace ActiBuddy.Customer
             LoadActivities();
         }
 
+        // Load all activities
         private void LoadActivities()
         {
             ActivitiesDataGrid.ItemsSource = _userActivityRepository.GetAllActivities();
         }
 
+        // Sign up for an activity
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && button.DataContext is Activity selectedActivity)
