@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="User Management" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#B3E5FC" Offset="1.0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <DataGrid x:Name="UsersDataGrid" AutoGenerateColumns="False" Margin="10"
                   SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False">
             <DataGrid.Columns>

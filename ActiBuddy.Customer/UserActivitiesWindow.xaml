@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="UserActivitiesWindow" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#B3E5FC" Offset="1.0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <DataGrid x:Name="UserActivitiesDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Margin="10">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Activity.Name}" />

@@ -3,7 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Admin Panel" Height="350" Width="525">
     <Grid>
-        <StackPanel>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#B3E5FC" Offset="1.0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button Content="Manage Users" Click="ManageUsers_Click" Margin="10"/>
             <Button Content="Manage Activities" Click="ManageActivities_Click" Margin="10"/>
         </StackPanel>
