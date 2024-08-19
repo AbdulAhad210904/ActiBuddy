@@ -38,27 +38,75 @@ namespace ActiBuddy.Admin
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (Activity == null)
+            if (ValidateForm())
             {
-                Activity = new Activity
+                if (Activity == null)
                 {
-                    Name = NameTextBox.Text,
-                    Description = DescriptionTextBox.Text,
-                    Date = DatePicker.SelectedDate ?? DateTime.Now,
-                    Latitude = double.Parse(LatitudeTextBox.Text),
-                    Longitude = double.Parse(LongitudeTextBox.Text)
-                };
+                    Activity = new Activity
+                    {
+                        Name = NameTextBox.Text,
+                        Description = DescriptionTextBox.Text,
+                        Date = DatePicker.SelectedDate ?? DateTime.Now,
+                        Latitude = double.Parse(LatitudeTextBox.Text),
+                        Longitude = double.Parse(LongitudeTextBox.Text)
+                    };
+                }
+                else
+                {
+                    Activity.Name = NameTextBox.Text;
+                    Activity.Description = DescriptionTextBox.Text;
+                    Activity.Date = DatePicker.SelectedDate ?? DateTime.Now;
+                    Activity.Latitude = double.Parse(LatitudeTextBox.Text);
+                    Activity.Longitude = double.Parse(LongitudeTextBox.Text);
+                }
+
+                DialogResult = true; // Indicates that the user clicked Save
             }
-            else
+        }
+
+        private bool ValidateForm()
+        {
+            // Validate Name
+            if (string.IsNullOrWhiteSpace(NameTextBox.Text))
             {
-                Activity.Name = NameTextBox.Text;
-                Activity.Description = DescriptionTextBox.Text;
-                Activity.Date = DatePicker.SelectedDate ?? DateTime.Now;
-                Activity.Latitude = double.Parse(LatitudeTextBox.Text);
-                Activity.Longitude = double.Parse(LongitudeTextBox.Text);
+                MessageBox.Show("Name is required.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                NameTextBox.Focus();
+                return false;
             }
 
-            DialogResult = true; // Indicates that the user clicked Save
+            // Validate Description
+            if (string.IsNullOrWhiteSpace(DescriptionTextBox.Text))
+            {
+                MessageBox.Show("Description is required.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                DescriptionTextBox.Focus();
+                return false;
+            }
+
+            // Validate Date
+            if (DatePicker.SelectedDate == null)
+            {
+                MessageBox.Show("Date is required.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                DatePicker.Focus();
+                return false;
+            }
+
+            // Validate Latitude
+            if (!double.TryParse(LatitudeTextBox.Text, out double latitude))
+            {
+                MessageBox.Show("Invalid Latitude. Please enter a valid number.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                LatitudeTextBox.Focus();
+                return false;
+            }
+
+            // Validate Longitude
+            if (!double.TryParse(LongitudeTextBox.Text, out double longitude))
+            {
+                MessageBox.Show("Invalid Longitude. Please enter a valid number.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                LongitudeTextBox.Focus();
+                return false;
+            }
+
+            return true;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

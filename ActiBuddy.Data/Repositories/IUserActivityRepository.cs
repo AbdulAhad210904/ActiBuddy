@@ -12,5 +12,6 @@ namespace ActiBuddy.Data.Repositories
         IEnumerable<Activity> GetAllActivities();
         void AddUserActivity(UserActivity userActivity);
         IEnumerable<UserActivity> GetUserActivitiesByUserId(int userId);
+        void DeleteUserActivity(int userActivityId, int userId);
     }
 }

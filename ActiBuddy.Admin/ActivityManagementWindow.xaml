@@ -8,7 +8,7 @@
         Title="ActivityManagementWindow" Height="450" Width="800">
     <Grid>
         <DataGrid x:Name="ActivitiesDataGrid" AutoGenerateColumns="False" Margin="10"
-                  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False">
+                  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ActivityId}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>

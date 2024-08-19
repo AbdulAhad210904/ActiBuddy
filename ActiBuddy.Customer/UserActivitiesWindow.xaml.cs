@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using ActiBuddy.Data.Repositories;
 using ActiBuddy.Data;
+using ActiBuddy.Data.Models;
 
 namespace ActiBuddy.Customer
 {
@@ -35,6 +36,21 @@ namespace ActiBuddy.Customer
         {
             UserActivitiesDataGrid.ItemsSource = _userActivityRepository.GetUserActivitiesByUserId(_userId);
         }
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.DataContext is UserActivity activity)
+            {
+                var result = MessageBox.Show("Are you sure you want to delete this activity?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    // Pass the UserId along with the UserActivityId
+                    _userActivityRepository.DeleteUserActivity(activity.UserActivityId, _userId);
+                    LoadUserActivities();
+                }
+            }
+        }
+
+
     }
 }
 

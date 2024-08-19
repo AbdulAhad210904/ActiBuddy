@@ -7,13 +7,20 @@
         mc:Ignorable="d"
         Title="UserActivitiesWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="UserActivitiesDataGrid" AutoGenerateColumns="False" Margin="10">
+        <DataGrid x:Name="UserActivitiesDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Margin="10">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Activity.Name}" />
                 <DataGridTextColumn Header="Description" Binding="{Binding Activity.Description}" />
                 <DataGridTextColumn Header="Date" Binding="{Binding Activity.Date}" />
                 <DataGridTextColumn Header="Latitude" Binding="{Binding Activity.Latitude}" />
                 <DataGridTextColumn Header="Longitude" Binding="{Binding Activity.Longitude}" />
+                <DataGridTemplateColumn Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Delete" Click="DeleteButton_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

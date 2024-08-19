@@ -35,5 +35,18 @@ namespace ActiBuddy.Data.Repositories
         {
             return _context.UserActivities.Where(ua => ua.UserId == userId).ToList();
         }
+        public void DeleteUserActivity(int userActivityId, int userId)
+        {
+            var userActivity = _context.UserActivities
+                                        .FirstOrDefault(ua => ua.UserActivityId == userActivityId && ua.UserId == userId);
+            if (userActivity != null)
+            {
+                _context.UserActivities.Remove(userActivity);
+                _context.SaveChanges();
+            }
+        }
+
+
+
     }
 }
